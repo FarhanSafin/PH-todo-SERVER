@@ -14,14 +14,10 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@clu
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-
 async function run(){
   try{
     await client.connect();
     const tasksCollection = client.db('todoapp').collection('tasks');
-
-
-
 
     app.get('/tasks', async(req, res) => {
       const query ={};
@@ -53,11 +49,6 @@ app.patch('/task/:id', async(req, res) => {
   res.send(result);
 });
 
-
-
-
-
-
   }
   finally{
 
@@ -65,15 +56,6 @@ app.patch('/task/:id', async(req, res) => {
 }
 
 run().catch(console.dir)
-
-
-
-
-
-
-
-
-
 
 app.get('/', (req, res) => {
   res.send('Hello SERVER')
